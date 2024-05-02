@@ -12,7 +12,7 @@ export default function Home() {
       alignItems: "center",
       padding: "20px",
     }}>
-      <h1 style={{ marginBottom: "20px" }}>Accountability App</h1>
+      <h1 style={{ marginBottom: "20px" }}>Testing Signing Mechanism</h1>
       <ConnectEmbed 
         client={client}
         chain={chain}
