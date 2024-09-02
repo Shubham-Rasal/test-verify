@@ -18,6 +18,7 @@ export const Accountability = () => {
   const [sign, setSign] = useState<string>("");
   const [verificationStatus, setVerificationStatus] = useState<boolean>(false);
   const [message, setMessage] = useState<string>("");
+
   const onSign = async () => {
     const res = await account?.signMessage({
       message: message,
@@ -60,99 +61,117 @@ export const Accountability = () => {
           style={{
             marginTop: "40px",
             display: "flex",
-            flexDirection: "column",
-            justifyContent: "start",
-            alignItems: "center",
+            justifyContent: "space-around",
+            width: "100%",
           }}
         >
-          <textarea
+          <div
             style={{
-              marginBottom: "20px",
-              border: "1px solid black",
-              borderRadius: "5px",
-              padding: "5px",
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              width: "45%",
             }}
-            placeholder="Message"
-            value={message}
-            onChange={(e) => setMessage(e.target.value)}
-          />
-
-          <button
-            style={{
-              width: "100px",
-              height: "30px",
-              marginBottom: "20px",
-              padding: "5px",
-              marginTop: "20px",
-              color: "black",
-              backgroundColor: "white",
-              border: "1px solid black",
-              borderRadius: "5px",
-              fontWeight: "bold",
-              fontSize: "16px",
-            }}
-            onClick={onSign}
           >
-            Sign
-          </button>
-
-          <div style={{ marginTop: "20px" }}>
-            <p
+            <textarea
               style={{
-                width: "200px",
-                marginTop: "20px",
-                overflowWrap: "break-word",
+                marginBottom: "20px",
+                border: "1px solid black",
+                borderRadius: "5px",
+                padding: "5px",
+                width: "100%",
               }}
+              placeholder="Message"
+              value={message}
+              onChange={(e) => setMessage(e.target.value)}
+            />
+
+            <button
+              style={{
+                width: "100px",
+                height: "30px",
+                marginBottom: "20px",
+                padding: "5px",
+                marginTop: "20px",
+                color: "black",
+                backgroundColor: "white",
+                border: "1px solid black",
+                borderRadius: "5px",
+                fontWeight: "bold",
+                fontSize: "16px",
+              }}
+              onClick={onSign}
             >
-              Signature: {sign}
-            </p>
+              Sign
+            </button>
+
+            <div style={{ marginTop: "20px" }}>
+              <p
+                style={{
+                  width: "200px",
+                  marginTop: "20px",
+                  overflowWrap: "break-word",
+                }}
+              >
+                Signature: {sign}
+              </p>
+            </div>
+          </div>
+
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              width: "45%",
+            }}
+          >
+            <input
+              style={{
+                marginBottom: "20px",
+                border: "1px solid black",
+                borderRadius: "5px",
+                padding: "15px",
+                width: "100%",
+              }}
+              type="text"
+              placeholder="Put your signature here"
+              value={sign}
+              onChange={(e) => setSign(e.target.value)}
+            />
+
+            <div className="status">
+              <p
+                style={{
+                  marginTop: "20px",
+                  textWrap: "wrap",
+                }}
+              >
+                Verification Status:{" "}
+                {verificationStatus ? "Verified" : "Not Verified"}
+              </p>
+            </div>
+
+            <button
+              style={{
+                width: "100px",
+                height: "30px",
+                marginBottom: "20px",
+                padding: "5px",
+                marginTop: "20px",
+                color: "black",
+                backgroundColor: "white",
+                border: "1px solid black",
+                borderRadius: "5px",
+                fontWeight: "bold",
+                fontSize: "16px",
+              }}
+              onClick={onVerify}
+            >
+              Verify
+            </button>
           </div>
         </div>
-
-        <input
-          style={{
-            marginBottom: "20px",
-            border: "1px solid black",
-            borderRadius: "5px",
-            padding: "5px",
-          }}
-          type="text"
-          placeholder="Put your signature here"
-          value={sign}
-          onChange={(e) => setSign(e.target.value)}
-        />
-
-        <div className="status">
-          <p
-            style={{
-              marginTop: "20px",
-
-              textWrap: "wrap",
-            }}
-          >
-            Verification Status:{" "}
-            {verificationStatus ? "Verified" : "Not Verified"}
-          </p>
-        </div>
-
-        <button
-          style={{
-            width: "100px",
-            height: "30px",
-            marginBottom: "20px",
-            padding: "5px",
-            marginTop: "20px",
-            color: "black",
-            backgroundColor: "white",
-            border: "1px solid black",
-            borderRadius: "5px",
-            fontWeight: "bold",
-            fontSize: "16px",
-          }}
-          onClick={onVerify}
-        >
-          Verify
-        </button>
       </div>
     );
   }
